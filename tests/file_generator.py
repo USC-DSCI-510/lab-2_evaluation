@@ -66,17 +66,17 @@ for test_function_config in config["tests"]:
     function_name = test_function_config["test_function"]
     function_args_name = test_function_config["args_name"]
 
-    # # Define the output directory where you want to generate the test files
-    # OUTPUT_DIR = os.path.join(DIR_PATH, f"test_{function_name}")
-    # INIT_FILE_PATH = os.path.join(OUTPUT_DIR, "__init__.py")
+    # Define the output directory where you want to generate the test files
+    OUTPUT_DIR = os.path.join(DIR_PATH, f"test_{function_name}")
+    INIT_FILE_PATH = os.path.join(OUTPUT_DIR, "__init__.py")
 
-    # # Create the output directory if it doesn't exist
-    # if not os.path.exists(OUTPUT_DIR):
-    #     os.makedirs(OUTPUT_DIR)
+    # Create the output directory if it doesn't exist
+    if not os.path.exists(OUTPUT_DIR):
+        os.makedirs(OUTPUT_DIR)
 
-    # if not os.path.exists(INIT_FILE_PATH):
-    #     with open(INIT_FILE_PATH, "w") as init_file:
-    #         pass
+    if not os.path.exists(INIT_FILE_PATH):
+        with open(INIT_FILE_PATH, "w") as init_file:
+            pass
 
     test_cases = test_function_config["test_cases"]
 
@@ -93,12 +93,12 @@ for test_function_config in config["tests"]:
 
         print(test_file_content)
 
-        # # Write the test file content to a Python file
-        # TEST_CASE_FILE_NAME = test_case["name"]
-        # test_file_path = os.path.join(OUTPUT_DIR, f"{TEST_CASE_FILE_NAME}.py")
+        # Write the test file content to a Python file
+        TEST_CASE_FILE_NAME = test_case["name"]
+        test_file_path = os.path.join(OUTPUT_DIR, f"{TEST_CASE_FILE_NAME}.py")
 
-        # with open(test_file_path, "w") as test_file:
-        #     test_file.write(test_file_content)
+        with open(test_file_path, "w") as test_file:
+            test_file.write(test_file_content)
 
-        # # Format the generated test file using black
-        # subprocess.run(["black", test_file_path, "--preview", "--line-length=100"])
+        # Format the generated test file using black
+        subprocess.run(["black", test_file_path, "--preview", "--line-length=100"])
