@@ -11,12 +11,13 @@ from lab2 import check_perfect_squares, format_date, split_by_delimiter
     ],
 )
 def test_format_date(input_args, expected_result, exception_message):
-    if expected_result is not None:
-        result = format_date(**input_args)
-        assert result == expected_result
     if exception_message is not None:
         with pytest.raises(Exception) as e_info:
-            assert str(e_info.value) == exception_message
+            result = format_date(**input_args)
+        assert str(e_info.value) == exception_message
+    else:
+        result = format_date(**input_args)
+        assert result == expected_result
 
 
 @pytest.mark.parametrize(
@@ -27,12 +28,13 @@ def test_format_date(input_args, expected_result, exception_message):
     ],
 )
 def test_split_by_delimiter(input_args, expected_result, exception_message):
-    if expected_result is not None:
-        result = split_by_delimiter(**input_args)
-        assert result == expected_result
     if exception_message is not None:
         with pytest.raises(Exception) as e_info:
-            assert str(e_info.value) == exception_message
+            result = split_by_delimiter(**input_args)
+        assert str(e_info.value) == exception_message
+    else:
+        result = split_by_delimiter(**input_args)
+        assert result == expected_result
 
 
 @pytest.mark.parametrize(
@@ -44,9 +46,10 @@ def test_split_by_delimiter(input_args, expected_result, exception_message):
     ],
 )
 def test_check_perfect_squares(input_args, expected_result, exception_message):
-    if expected_result is not None:
-        result = check_perfect_squares(**input_args)
-        assert result == expected_result
     if exception_message is not None:
         with pytest.raises(Exception) as e_info:
-            assert str(e_info.value) == exception_message
+            result = check_perfect_squares(**input_args)
+        assert str(e_info.value) == exception_message
+    else:
+        result = check_perfect_squares(**input_args)
+        assert result == expected_result
