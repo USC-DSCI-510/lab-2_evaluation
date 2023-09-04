@@ -42,3 +42,9 @@ jobs:
 
             - uses: education/autograding@v1
               name: Run the Grading Script
+              id: autograding
+
+            - name: Access Autograding Output
+              run: |
+                autograding_output="${{ steps.autograding.outputs }}"
+                echo "Autograding Output: $autograding_output"
