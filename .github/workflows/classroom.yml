@@ -1,0 +1,44 @@
+name: GitHub Classroom Workflow
+
+on: 
+    push:
+        branches:
+            - main
+            - auto-grader-test-**
+    pull_request:
+        branches:
+          - main
+    workflow_dispatch:
+
+permissions:
+    checks: write
+    actions: read
+    contents: read
+
+jobs:
+    run-auto-grade:
+        name: Autograding
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            
+            - name: Set up Python
+              uses: actions/setup-python@v4
+              with:
+                python-version: '3.x'
+
+            - name: Install dependencies
+              run: pip install flake8 black
+
+            - name: Lint with Flake8
+              run: |
+                find . -name "*.py" -print0 | xargs -0 flake8 --max-line-length=120 --ignore=E402,F841,F401,E302,E305,E266,E203,W503
+              continue-on-error: true
+
+            - name: Format with Black
+              run: |
+                find . -name "*.py" -print0 | xargs -0 black --check --preview --line-length=120
+              continue-on-error: true
+
+            - uses: education/autograding@v1
+              name: Run the Grading Script

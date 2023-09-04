@@ -1,0 +1,98 @@
+name: Master Autograder Workflow
+
+on: 
+  pull_request:
+    branches:
+        - main
+  workflow_dispatch:
+
+jobs:
+    auto_grade:
+        runs-on: ubuntu-latest
+        env:
+            GITHUB_TOKEN: ${{ secrets.CLASSROOM_GITHUB_TOKEN }}
+            CLASSROOM_ID: ${{ vars.CLASSROOM_ID }}
+            ASSIGNMENT_ID: ${{ vars.ASSIGNMENT_ID }}
+
+        steps:
+            - name: Set Current Date and Time
+              run: |
+                echo "CURRENT_DATETIME=$(date +"%Y-%m-%d_%H-%M-%S")" >> "$GITHUB_ENV"
+        
+            - name: Install GitHub Classroom CLI  
+              run: gh extension install github/gh-classroom
+
+            - name: GitHub CLI authentication status  
+              run: gh auth status
+
+            - name: Clone Evaluation Repo
+              run: gh repo clone USC-DSCI-510/lab-1_evaluation -- -b 2-auto-grading-scripts-workflows
+
+            - name: Clone Assignments
+              run: gh classroom clone student-repos -a $ASSIGNMENT_ID --per-page 100
+
+            # - name: Clone Test Assignments
+            #   run: |
+            #     mkdir assignments
+            #     cd assignments
+            #     gh repo clone USC-DSCI-510/lab-1-akshaya999
+            #     gh repo clone USC-DSCI-510/lab-1-GreatYYX
+            #     gh repo clone USC-DSCI-510/lab-1-saggu
+            #     cd ..
+            
+            - name: Set Git Configuration
+              run: |
+                git config --global user.email "actions@github.com"
+                git config --global user.name "GitHub Actions"
+
+            # - name: Copy Grading Files & Create a Pull Request
+            #   run: |
+            #       cd lab-1-akshaya999
+
+            #       git checkout -b auto-grader-test
+
+            #       cp ../lab-1_evaluation/.github/classroom/autograding.json ./.github/classroom/autograding.json
+            #       cp ../lab-1_evaluation/.github/workflows/classroom.yml ./.github/workflows/classroom.yml
+            #       cp -r ../lab-1_evaluation/tests/* ./
+
+            #       git add .
+            #       git commit -m "Add testing and grading files"
+            #       git push https://$GITHUB_TOKEN@github.com/USC-DSCI-510/lab-1-akshaya999.git auto-grader-test
+
+            #       gh pr create --base main --head auto-grader-test --title "Auto Grader Bot" --body "Run the auto grading scripts"
+                  
+            #       cd ..
+            #   continue-on-error: true
+
+            - name: Copy Grading Files and Create Pull Request
+              run: |
+                cd lab-1-submissions
+
+                for student_repo in ./*; do
+                  if [ -d "$student_repo" ]; then
+                    repo_name=$(basename "$student_repo")
+                    branch_name="auto-grader-test-$CURRENT_DATETIME"  # Construct the branch name
+            
+                    cd "$student_repo"
+                    
+                    git checkout -b "$branch_name" 
+                    
+                    cp ../../lab-1_evaluation/.github/classroom/autograding.json ./.github/classroom/autograding.json
+                    cp ../../lab-1_evaluation/.github/workflows/classroom.yml ./.github/workflows/classroom.yml
+                    cp -r ../../lab-1_evaluation/tests/* ./
+                    
+                    git add .
+                    git commit -m "Add testing and grading files"
+                    git push https://$GITHUB_TOKEN@github.com/USC-DSCI-510/$repo_name.git "$branch_name"
+                    
+                    # gh pr create --base main --head "$branch_name" --title "Auto Grader Bot" --body "Run the auto grading scripts"
+                    
+                    cd ..
+                  fi
+                done
+              continue-on-error: true
+
+            - name: Cleanup Cloned Repositories
+              run: |
+                rm -rf */
+            
