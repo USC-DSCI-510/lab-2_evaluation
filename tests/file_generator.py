@@ -183,6 +183,20 @@ class AutogradingConfigGenerator:
                     }
                 )
 
+            # Adding a bonus linting pass to the test suite
+            test_cases.append(
+                {
+                    "name": "pep8_linter_check_flake8_bonus",
+                    "setup": "sudo -H pip3 install flake 8",
+                    "run": (
+                        "flake8 lab2.py --max-line-length=100"
+                        " --ignore=E402,F841,F401,E302,E305,E266,E203,W503,E722"
+                    ),
+                    "timeout": 5,
+                    "points": 5,
+                }
+            )
+
         config = {"tests": test_cases}
         self.write_config(config)
 
