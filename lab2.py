@@ -8,12 +8,15 @@ def format_date(day: int, month: int, year: int) -> str:
     is_leap_year = calendar.isleap(year)
 
     # Validate the input date
-    if (
-        not (1 <= day <= 31)
-        or not (1 <= month <= 12)
-        or (day == 29 and month == 2 and not is_leap_year)
-        or not (1000 <= year <= 3000)
-    ):
+    if not (1 <= day <= 31) or not (1 <= month <= 12) or not (1000 <= year <= 3000):
+        raise Exception(f"The given date: {day}, {month}, {year} is invalid")
+
+    # Check for the invalid date in February (non-leap year)
+    if month == 2 and day > 28 and not is_leap_year:
+        raise Exception(f"The given date: {day}, {month}, {year} is invalid")
+
+    # Check for months with fewer than 31 days
+    if (day > 30 and (month in [4, 6, 9, 11])) or (day > 31):
         raise Exception(f"The given date: {day}, {month}, {year} is invalid")
 
     # Create a datetime object with the provided components
