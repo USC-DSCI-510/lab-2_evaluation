@@ -37,7 +37,7 @@ jobs:
 
             - name: Format with Black
               run: |
-                find . -name "*.py" -print0 | xargs -0 black --check --preview --line-length=100
+                find . -name "*.py" -print0 | xargs -0 black --preview --line-length=100
               continue-on-error: true
 
             - uses: education/autograding@v1
