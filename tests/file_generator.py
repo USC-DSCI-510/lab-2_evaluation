@@ -191,27 +191,10 @@ if __name__ == "__main__":
     tests_directory = os.path.dirname(__file__)
     root_directory = os.path.dirname(tests_directory)
     test_config_path = os.path.join(tests_directory, "config.json")
+    test_template_path = os.path.join(tests_directory, "test_template.txt")
 
-    test_template = """import pytest
-
-    from lab2 import {function_name}
-
-
-    @pytest.mark.parametrize(
-        'input_args, expected_result, exception_message',
-        [
-            ({test_cases}, {expected_result}, {exception_message})
-        ]
-    )
-    def test_{function_name}(input_args, expected_result, exception_message):
-        if exception_message is not None:
-            with pytest.raises(Exception) as e_info:
-                {function_name}(**input_args)
-            assert str(e_info.value) == exception_message
-        else:
-            result = {function_name}(**input_args)
-            assert result == expected_result
-    """
+    with open(test_template_path, "r") as f:
+        test_template = f.read()
 
     test_file_generator = TestFileGenerator(test_config_path, tests_directory, test_template)
     test_file_generator.generate_test_files()
