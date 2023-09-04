@@ -97,7 +97,7 @@
 				{
 					"name": "test_split_by_delimiter_variety_1",
 					"args": ["one,two,three", "e"],
-					"expected_result": ["on", ",two,thre", ""],
+					"expected_result": ["on", ",two,thr", "", ""],
 					"exception_message": null
 				},
 				{
