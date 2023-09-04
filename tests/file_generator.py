@@ -46,12 +46,13 @@ from lab2 import {function_name}
     ]
 )
 def test_{function_name}(input_args, expected_result, exception_message):
-    if expected_result is not None:
-        result = {function_name}(**input_args)
-        assert result == expected_result
     if exception_message is not None:
         with pytest.raises(Exception) as e_info:
-            assert str(e_info.value) == exception_message
+            {function_name}(**input_args)
+        assert str(e_info.value) == exception_message
+    else:
+        result = {function_name}(**input_args)
+        assert result == expected_result
 """
 
 DIR_PATH = os.path.dirname(__file__)
@@ -84,14 +85,10 @@ for test_function_config in config["tests"]:
         # Generate the test file content using the template
         test_file_content = template.format(
             function_name=function_name,
-            test_cases={
-                function_args_name[i]: test_case["args"][i] for i in range(len(function_args_name))
-            },
+            test_cases=dict(zip(function_args_name, test_case["args"])),
             expected_result=serialize_string(test_case["expected_result"]),
             exception_message=serialize_string(test_case["exception_message"]),
         )
-
-        print(test_file_content)
 
         # Write the test file content to a Python file
         TEST_CASE_FILE_NAME = test_case["name"]
@@ -100,5 +97,5 @@ for test_function_config in config["tests"]:
         with open(test_file_path, "w") as test_file:
             test_file.write(test_file_content)
 
-        # Format the generated test file using black
-        subprocess.run(["black", test_file_path, "--preview", "--line-length=100"])
+    # Format the generated test file using black
+    subprocess.run(["black", OUTPUT_DIR, "--preview", "--line-length=100", "--workers=2"])
