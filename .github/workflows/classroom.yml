@@ -46,5 +46,7 @@ jobs:
 
             - name: Access Autograding Output
               run: |
-                autograding_output="${{ steps.autograding.outputs.Autograding.text }}"
-                echo "Autograding Output: $autograding_output"
+                for key in "${!steps.autograding.outputs[@]}"; do
+                  echo "Output key: $key"
+                  echo "Output value: ${steps.autograding.outputs[$key]}"
+                done
