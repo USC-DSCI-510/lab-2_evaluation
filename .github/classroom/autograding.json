@@ -1,0 +1,221 @@
+{
+  "tests": [
+    {
+      "name": "test_format_date_valid_1",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_format_date/test_format_date_valid_1.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_format_date_valid_2",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_format_date/test_format_date_valid_2.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_format_date_valid_3",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_format_date/test_format_date_valid_3.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_format_date_valid_4",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_format_date/test_format_date_valid_4.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_format_date_valid_5",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_format_date/test_format_date_valid_5.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_format_date_invalid_1",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_format_date/test_format_date_invalid_1.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_format_date_invalid_2",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_format_date/test_format_date_invalid_2.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_format_date_invalid_3",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_format_date/test_format_date_invalid_3.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_format_date_invalid_4",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_format_date/test_format_date_invalid_4.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_format_date_invalid_5",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_format_date/test_format_date_invalid_5.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_split_by_delimiter_valid_1",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_valid_1.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_split_by_delimiter_valid_2",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_valid_2.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_split_by_delimiter_valid_3",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_valid_3.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_split_by_delimiter_variety_3",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_variety_3.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_split_by_delimiter_variety_1",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_variety_1.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_split_by_delimiter_variety_2",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_variety_2.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_split_by_delimiter_valid_4",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_valid_4.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_split_by_delimiter_invalid_1",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_invalid_1.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_split_by_delimiter_invalid_2",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_invalid_2.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_split_by_delimiter_invalid_3",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_invalid_3.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_split_by_delimiter_invalid_4",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_invalid_4.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_split_by_delimiter_invalid_5",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_invalid_5.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_check_perfect_squares_valid_1",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_check_perfect_squares/test_check_perfect_squares_valid_1.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_check_perfect_squares_valid_2",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_check_perfect_squares/test_check_perfect_squares_valid_2.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_check_perfect_squares_valid_3",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_check_perfect_squares/test_check_perfect_squares_valid_3.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_check_perfect_squares_valid_4",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_check_perfect_squares/test_check_perfect_squares_valid_4.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_check_perfect_squares_valid_5",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_check_perfect_squares/test_check_perfect_squares_valid_5.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_check_perfect_squares_invalid_1",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_check_perfect_squares/test_check_perfect_squares_invalid_1.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_check_perfect_squares_invalid_2",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_check_perfect_squares/test_check_perfect_squares_invalid_2.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_check_perfect_squares_invalid_3",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_check_perfect_squares/test_check_perfect_squares_invalid_3.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_check_perfect_squares_invalid_4",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_check_perfect_squares/test_check_perfect_squares_invalid_4.py",
+      "timeout": 5,
+      "points": 1
+    }
+  ]
+}
