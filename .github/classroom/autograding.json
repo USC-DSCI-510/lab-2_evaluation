@@ -71,6 +71,41 @@
       "points": 1
     },
     {
+      "name": "test_format_date_invalid_april",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_format_date/test_format_date_invalid_april.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_format_date_invalid_september",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_format_date/test_format_date_invalid_september.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_format_date_leap_year",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_format_date/test_format_date_leap_year.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_format_date_non_leap_year",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_format_date/test_format_date_non_leap_year.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_format_date_invalid_june",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest tests/test_format_date/test_format_date_invalid_june.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
       "name": "test_split_by_delimiter_valid_1",
       "setup": "sudo -H pip3 install pytest",
       "run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_valid_1.py",
