@@ -42,11 +42,3 @@ jobs:
 
             - uses: education/autograding@v1
               name: Run the Grading Script
-              id: autograding
-
-            - name: Access Autograding Output
-              run: |
-                for key in "${!steps.autograding.outputs[@]}"; do
-                  echo "Output key: $key"
-                  echo "Output value: ${steps.autograding.outputs[$key]}"
-                done
