@@ -6,6 +6,11 @@ on:
     types:
       - completed
 
+permissions:
+    checks: write
+    actions: read
+    contents: read
+
 jobs:
   post-marks:
     name: Post marks
@@ -17,7 +22,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Get depedent workflow run id
         run: | 
             gh run list > output.log
