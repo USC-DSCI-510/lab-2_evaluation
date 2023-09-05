@@ -80,7 +80,7 @@ jobs:
             echo "| Bonus Points       | $bonus_points_gained    | 5                    |" >> $GITHUB_STEP_SUMMARY
             echo "| Total Points       | $total_points_obtained  | $max_points_possible |" >> $GITHUB_STEP_SUMMARY
 
-            echo "> **Note**" >> $GITHUB_STEP_SUMMARY
+            echo "> [!NOTE]" >> $GITHUB_STEP_SUMMARY
             echo "> Detailed Feedback - Summary of Test Cases" >> $GITHUB_STEP_SUMMARY
             echo "> [View Logs](https://github.com/$name_with_owner/actions/runs/$gwf_run_id)" >> $GITHUB_STEP_SUMMARY
             
