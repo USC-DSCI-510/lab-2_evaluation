@@ -60,24 +60,28 @@ jobs:
           student_login=$(gh repo view $GITHUB_REPOSITORY --json owner -q '.owner.login')
           repo_name=$(basename "$GITHUB_REPOSITORY")
           repo_url=$(gh repo view $GITHUB_REPOSITORY --json url -q '.url')
+          name_with_owner=$(gh repo view $GITHUB_REPOSITORY --json nameWithOwner -q '.nameWithOwner')
 
           # You can fetch other metadata as needed
 
           echo "student_login=$student_login" >> "$GITHUB_ENV"
           echo "repo_name=$repo_name" >> "$GITHUB_ENV"
           echo "repo_url=$repo_url" >> "$GITHUB_ENV"
+          echo "name_with_owner=$name_with_owner" >> "$GITHUB_ENV"
 
       - name: Create Job Summary
         run: |
             echo "## Comprehensive Evaluation Summary" >> $GITHUB_STEP_SUMMARY
             echo "---"
             echo "### Grading Report" >> $GITHUB_STEP_SUMMARY
-            echo "| Metric                        | Value                                       |" >> $GITHUB_STEP_SUMMARY
-            echo "|-------------------------------|---------------------------------------------|" >> $GITHUB_STEP_SUMMARY
-            echo "| Points Gained                 | $points_gained/$max_points_possible         |" >> $GITHUB_STEP_SUMMARY
-            echo "| Bonus Points Gained           | $bonus_points_gained/5                      |" >> $GITHUB_STEP_SUMMARY
-            echo "| Total Points Obtained         | $total_points_obtained/$max_points_possible |" >> $GITHUB_STEP_SUMMARY
+            echo "| Metric             | Obtained                | Max Possible         |" >> $GITHUB_STEP_SUMMARY
+            echo "|--------------------|-------------------------|----------------------|" >> $GITHUB_STEP_SUMMARY
+            echo "| Points             | $points_gained          | $max_points_possible |" >> $GITHUB_STEP_SUMMARY
+            echo "| Bonus Points       | $bonus_points_gained    | 5                    |" >> $GITHUB_STEP_SUMMARY
+            echo "| Total Points       | $total_points_obtained  | $max_points_possible |" >> $GITHUB_STEP_SUMMARY
+            echo "::warning file=lab2.py,title=Detailed Feedback::Summary of Test Cases [View Logs](https://github.com/$name_with_owner/actions/runs/$gwf_run_id)"
             echo "### Student Metadata" >> $GITHUB_STEP_SUMMARY
+            echo "|----------------------|------------------------|" >> $GITHUB_STEP_SUMMARY
             echo "| Student Login        | $student_login         |" >> $GITHUB_STEP_SUMMARY
             echo "| Repository Name      | $repo_name             |" >> $GITHUB_STEP_SUMMARY
             echo "| Repository URL       | [$repo_url]($repo_url) |" >> $GITHUB_STEP_SUMMARY
