@@ -16,6 +16,8 @@ jobs:
       GH_TOKEN: ${{ github.token }}
 
     steps:
+      - uses: actions/checkout@v3
+      
       - name: Get depedent workflow run id
         run: | 
             gh run list > output.log
