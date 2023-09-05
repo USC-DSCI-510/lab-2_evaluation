@@ -36,7 +36,7 @@ jobs:
         id: marks
         run: |
           points_line=$(gh run view $gwf_run_id --log | grep Points)
-
+          
           points_gained=$(echo $points_line | awk '{print $NF}' | cut -d'/' -f1)
           total_points=$(echo $points_line | awk '{print $NF}' | cut -d'/' -f2)
 
