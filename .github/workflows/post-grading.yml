@@ -71,8 +71,6 @@ jobs:
 
       - name: Create Job Summary
         run: |
-            echo "::notice file=lab2.py,title=Detailed Feedback::Summary of Test Cases [View Logs](https://github.com/$name_with_owner/actions/runs/$gwf_run_id)"
-
             echo "## Comprehensive Evaluation Summary" >> $GITHUB_STEP_SUMMARY
             echo "---"
             echo "### Grading Report" >> $GITHUB_STEP_SUMMARY
@@ -81,6 +79,8 @@ jobs:
             echo "| Points             | $points_gained          | $max_points_possible |" >> $GITHUB_STEP_SUMMARY
             echo "| Bonus Points       | $bonus_points_gained    | 5                    |" >> $GITHUB_STEP_SUMMARY
             echo "| Total Points       | $total_points_obtained  | $max_points_possible |" >> $GITHUB_STEP_SUMMARY
+
+            echo "::notice file=lab2.py,title=Detailed Feedback::Summary of Test Cases [View Logs](https://github.com/$name_with_owner/actions/runs/$gwf_run_id)" >> $GITHUB_STEP_SUMMARY
             
             echo "### Student Metadata" >> $GITHUB_STEP_SUMMARY
             echo "| Name                 | Description            |" >> $GITHUB_STEP_SUMMARY
