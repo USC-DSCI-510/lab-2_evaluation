@@ -19,6 +19,9 @@ jobs:
     run-auto-grade:
         name: Autograding
         runs-on: ubuntu-latest
+        
+        env:
+          GH_TOKEN: ${{ github.token }}
 
         outputs:
           points_gained: ${{ steps.marks.outputs.points_gained }}
