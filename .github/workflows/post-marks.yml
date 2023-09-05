@@ -26,7 +26,10 @@ jobs:
       - name: Get depedent workflow run id
         run: | 
             gh run list > output.log
-            gwf_run_id=$(head -n 1 output.log | grep -oP '\d{10}' | awk '{print $1}')
+
+            cat output.log
+
+            gwf_run_id=$(cat output.log | grep completed | grep -oP '\d{10}' | awk 'NR==1 {print $1}')
             echo "gwf_run_id=$gwf_run_id" >> "$GITHUB_ENV"
 
       - name: Extract Marks from logs
