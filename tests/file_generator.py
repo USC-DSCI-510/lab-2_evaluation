@@ -187,6 +187,7 @@ class AutogradingConfigGenerator:
         test_cases.append(
             {
                 "name": "bonus_pep8_linter_check_flake8",
+                # "setup": "sudo -H pip3 install flake8",
                 "run": (
                     "flake8 lab2.py --max-line-length=100"
                     " --ignore=E402,F841,F401,E302,E305,E266,E203,W503,E722"
