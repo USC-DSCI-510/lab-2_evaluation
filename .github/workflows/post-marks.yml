@@ -1,0 +1,69 @@
+name: Post Marks Workflow
+
+on:
+  workflow_run:
+    workflows: ["GitHub Classroom Workflow"]
+    types:
+      - completed
+
+jobs:
+  post-marks:
+    name: Post marks
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    env:
+      GH_TOKEN: ${{ github.token }}
+
+    steps:
+      - name: Get depedent workflow run id
+        run: | 
+            gh run list > output.log
+            gwf_run_id=$(head -n 1 output.log | grep -oP '\d{10}' | awk '{print $1}')
+            echo "gwf_run_id=$gwf_run_id" >> "$GITHUB_ENV"
+
+      - name: Extract Marks from logs
+        id: marks
+        run: |
+          points_line=$(gh run view $gwf_run_id --log | grep Points)
+
+          points_gained=$(echo $points_line | awk '{print $NF}' | cut -d'/' -f1)
+          total_points=$(echo $points_line | awk '{print $NF}' | cut -d'/' -f2)
+
+          if gh run view $gwf_run_id --log | grep -q '✅ bonus_pep8_linter_check_flake8'; then
+            bonus_points=5
+          else
+            bonus_points=0
+          fi
+
+          points_gained = $((points_gained + $bonus_points))
+
+          echo "points_gained=$points_gained" >> "$GITHUB_ENV"
+          echo "total_points=$total_points" >> "$GITHUB_ENV"
+          echo "bonus_points_gained=$bonus_points" >> "$GITHUB_ENV"
+
+      - name: Fetch Student Metadata
+        id: student-metadata
+        run: |
+          # Fetch student metadata
+          student_login=$(gh repo view $GITHUB_REPOSITORY --json owner.login -q '.owner.login')
+          repo_name=$(basename "$GITHUB_REPOSITORY")
+          repo_url=$(gh repo view $GITHUB_REPOSITORY --json html_url -q '.html_url')
+
+          # You can fetch other metadata as needed
+
+          echo "student_login=$student_login" >> "$GITHUB_ENV"
+          echo "repo_name=$repo_name" >> "$GITHUB_ENV"
+          echo "repo_url=$repo_url" >> "$GITHUB_ENV"
+
+      - name: Create Job Summary
+        run: |
+          echo "### Comprehensive Evaluation Summary" >> $GITHUB_STEP_SUMMARY
+          echo "#### Evaluation Report" >> $GITHUB_STEP_SUMMARY
+          echo "Points Gained: $points_gained" >> $GITHUB_STEP_SUMMARY
+          echo "Total Points: $total_points" >> $GITHUB_STEP_SUMMARY
+          echo "Bonus Points Gained: $bonus_points_gained" >> $GITHUB_STEP_SUMMARY
+          echo "#### Student Metadata" >> $GITHUB_STEP_SUMMARY
+          echo "Student Login: $student_login" >> $GITHUB_STEP_SUMMARY
+          echo "Repository Name: $repo_name" >> $GITHUB_STEP_SUMMARY
+          echo "Repository URL: $repo_url" >> $GITHUB_STEP_SUMMARY
