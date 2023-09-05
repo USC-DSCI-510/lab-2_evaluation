@@ -29,14 +29,14 @@ jobs:
 
             cat output.log
 
-            gwf_run_id=$(cat output.log | grep completed | grep -oP '\d{10}' | awk 'NR==1 {print $1}')
+            gwf_run_id=$(cat output.log | grep completed | grep "GitHub Classroom Workflow" | grep -oP '\d{10}' | awk 'NR==1 {print $1}')
             echo "gwf_run_id=$gwf_run_id" >> "$GITHUB_ENV"
 
       - name: Extract Marks from logs
         id: marks
         run: |
           points_line=$(gh run view $gwf_run_id --log | grep Points)
-          
+
           points_gained=$(echo $points_line | awk '{print $NF}' | cut -d'/' -f1)
           total_points=$(echo $points_line | awk '{print $NF}' | cut -d'/' -f2)
 
@@ -46,7 +46,7 @@ jobs:
             bonus_points=0
           fi
 
-          points_gained = $((points_gained + $bonus_points))
+          points_gained=$((points_gained + bonus_points))
 
           echo "points_gained=$points_gained" >> "$GITHUB_ENV"
           echo "total_points=$total_points" >> "$GITHUB_ENV"
