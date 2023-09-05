@@ -28,7 +28,7 @@ jobs:
                 python-version: '3.x'
 
             - name: Install dependencies
-              run: pip install flake8 black
+              run: pip install flake8 black pytest
 
             - name: Lint with Flake8
               run: |
