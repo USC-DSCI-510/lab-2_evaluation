@@ -1,4 +1,4 @@
-name: Post Marks Workflow
+name: Post Grading Workflow
 
 on:
   workflow_run:
@@ -35,10 +35,10 @@ jobs:
       - name: Extract Marks from logs
         id: marks
         run: |
-          points_line=$(gh run view $gwf_run_id --log | grep Points)
+          points_line=$(gh run view $gwf_run_id --log | grep Points | sed 's/\x1B\[[0-9;]*[JKmsu]//g')
 
           points_gained=$(echo $points_line | awk '{print $NF}' | cut -d'/' -f1)
-          total_points=$(echo $points_line | awk '{print $NF}' | cut -d'/' -f2)
+          max_points_possible=$(echo $points_line | awk '{print $NF}' | cut -d'/' -f2)
 
           if gh run view $gwf_run_id --log | grep -q '✅ bonus_pep8_linter_check_flake8'; then
             bonus_points=5
@@ -46,11 +46,12 @@ jobs:
             bonus_points=0
           fi
 
-          points_gained=$((points_gained + bonus_points))
+          total_points_obtained=$((points_gained + bonus_points))
 
           echo "points_gained=$points_gained" >> "$GITHUB_ENV"
-          echo "total_points=$total_points" >> "$GITHUB_ENV"
+          echo "max_points_possible=$max_points_possible" >> "$GITHUB_ENV"
           echo "bonus_points_gained=$bonus_points" >> "$GITHUB_ENV"
+          echo "total_points_obtained=$total_points_obtained" >> "$GITHUB_ENV"
 
       - name: Fetch Student Metadata
         id: student-metadata
@@ -68,12 +69,17 @@ jobs:
 
       - name: Create Job Summary
         run: |
-          echo "### Comprehensive Evaluation Summary" >> $GITHUB_STEP_SUMMARY
-          echo "#### Evaluation Report" >> $GITHUB_STEP_SUMMARY
-          echo "Points Gained: $points_gained" >> $GITHUB_STEP_SUMMARY
-          echo "Total Points: $total_points" >> $GITHUB_STEP_SUMMARY
-          echo "Bonus Points Gained: $bonus_points_gained" >> $GITHUB_STEP_SUMMARY
-          echo "#### Student Metadata" >> $GITHUB_STEP_SUMMARY
-          echo "Student Login: $student_login" >> $GITHUB_STEP_SUMMARY
-          echo "Repository Name: $repo_name" >> $GITHUB_STEP_SUMMARY
-          echo "Repository URL: $repo_url" >> $GITHUB_STEP_SUMMARY
+            echo "## Comprehensive Evaluation Summary" >> $GITHUB_STEP_SUMMARY
+            echo "---"
+            echo "### Grading Report" >> $GITHUB_STEP_SUMMARY
+            echo "| Metric                        | Value                                       |" >> $GITHUB_STEP_SUMMARY
+            echo "|-------------------------------|---------------------------------------------|" >> $GITHUB_STEP_SUMMARY
+            echo "| Points Gained                 | $points_gained/$max_points_possible         |" >> $GITHUB_STEP_SUMMARY
+            echo "| Bonus Points Gained           | $bonus_points_gained/5                      |" >> $GITHUB_STEP_SUMMARY
+            echo "| Total Points Obtained         | $total_points_obtained/$max_points_possible |" >> $GITHUB_STEP_SUMMARY
+            echo "### Student Metadata" >> $GITHUB_STEP_SUMMARY
+            echo "| Student Login        | $student_login         |" >> $GITHUB_STEP_SUMMARY
+            echo "| Repository Name      | $repo_name             |" >> $GITHUB_STEP_SUMMARY
+            echo "| Repository URL       | [$repo_url]($repo_url) |" >> $GITHUB_STEP_SUMMARY
+        
+        
