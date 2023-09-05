@@ -19,13 +19,14 @@ jobs:
     run-auto-grade:
         name: Autograding
         runs-on: ubuntu-latest
-        
+
         env:
           GH_TOKEN: ${{ github.token }}
 
         outputs:
           points_gained: ${{ steps.marks.outputs.points_gained }}
           total_points: ${{ steps.marks.outputs.total_points }}
+          bonus_points_gained: ${{ steps.marks.outputs.bonus_points_gained }}
 
         steps:
             - uses: actions/checkout@v3
@@ -54,12 +55,22 @@ jobs:
             - name: Extract Marks from logs
               id: marks
               run: |
-                points_line=$(gh run view 6080510862 --log | grep Points)
+                points_line=$(gh run view $GITHUB_RUN_ID --log | grep Points)
+
                 points_gained=$(echo $points_line | awk '{print $NF}' | cut -d'/' -f1)
                 total_points=$(echo $points_line | awk '{print $NF}' | cut -d'/' -f2)
 
+                if gh run view $GITHUB_RUN_ID --log | grep -q '✅ bonus_pep8_linter_check_flake8'; then
+                  bonus_points=5
+                else
+                  bonus_points=0
+                fi
+
+                points_gained = $((points_gained + $bonus_points))
+
                 echo "points_gained=$points_gained" >> "$GITHUB_OUTPUT"
                 echo "total_points=$total_points" >> "$GITHUB_OUTPUT"
+                echo "bonus_points_gained=$bonus_points" >> "$GITHUB_OUTPUT"
 
     post_marks:
         name: Post marks
@@ -67,9 +78,45 @@ jobs:
 
         needs: run-auto-grade
 
+        env:
+          points_gained: ${{needs.run-auto-grade.outputs.points_gained}}
+          total_points: ${{needs.run-auto-grade.outputs.total_points}}
+          bonus_points_gained: ${{needs.run-auto-grade.outputs.bonus_points_gained}}
+
+          GH_TOKEN: ${{ github.token }}
+
+        outputs:
+          student_login: ${{ steps.student-metadata.outputs.student_login }}
+          repo_name: ${{ steps.student-metadata.outputs.repo_name }}
+          repo_url: ${{ steps.student-metadata.outputs.repo_url }}
+
         steps:
-          - env:
-              points_gained: ${{needs.run-auto-grade.outputs.points_gained}}
-              total_points: ${{needs.run-auto-grade.outputs.total_points}}
+          - name: Fetch Student Metadata
+            id: student-metadata
+            run: |
+              # Fetch student metadata
+              student_login=$(gh repo view $GITHUB_REPOSITORY --json owner.login -q '.owner.login')
+              repo_name=$(basename "$GITHUB_REPOSITORY")
+              repo_url=$(gh repo view $GITHUB_REPOSITORY --json html_url -q '.html_url')
+
+              # You can fetch other metadata as needed
+
+              echo "student_login=$student_login" "$GITHUB_OUTPUT"
+              echo "repo_name=$repo_name" "$GITHUB_OUTPUT"
+              echo "name=repo_url=$repo_url" "$GITHUB_OUTPUT"
+
+          - name: Echo Marks
             run: echo "Marks $points_gained/$total_points"
+
+          - name: Create Job Summary
+            run: |
+              echo "### Comprehensive Evaluation Summary" >> $GITHUB_STEP_SUMMARY
+              echo "#### Evaluation Report" >> $GITHUB_STEP_SUMMARY
+              echo "Points Gained: $points_gained" >> $GITHUB_STEP_SUMMARY
+              echo "Total Points: $total_points" >> $GITHUB_STEP_SUMMARY
+              echo "Bonus Points Gained: $bonus_points" >> $GITHUB_STEP_SUMMARY
+              echo "#### Student Metadata" >> $GITHUB_STEP_SUMMARY
+              echo "Student Login: ${{ steps.student-metadata.outputs.student_login }}" >> $GITHUB_STEP_SUMMARY
+              echo "Repository Name: ${{ steps.student-metadata.outputs.repo_name }}" >> $GITHUB_STEP_SUMMARY
+              echo "Repository URL: ${{ steps.student-metadata.outputs.repo_url }}" >> $GITHUB_STEP_SUMMARY
 
