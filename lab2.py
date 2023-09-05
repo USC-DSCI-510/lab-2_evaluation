@@ -29,7 +29,7 @@ def format_date(day: int, month: int, year: int) -> str:
 
 def split_by_delimiter(some_string: str, delimiter: str) -> List[str]:
     # Check if input is valid
-    if not isinstance(some_string, str) or not isinstance(delimiter, str):
+    if not isinstance(some_string, str) or not isinstance(delimiter, str) or len(delimiter) > 1:
         raise Exception("Invalid Input")
 
     # Handle the case of an empty delimiter

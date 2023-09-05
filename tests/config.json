@@ -1,291 +1,320 @@
 {
-	"tests": [
-		{
-			"test_function": "format_date",
-			"args_name": ["day", "month", "year"],
-			"test_cases": [
-				{
-					"name": "test_format_date_valid_1",
-					"args": [1, 8, 2000],
-					"expected_result": "01 August, 2000",
-					"exception_message": null
-				},
-				{
-					"name": "test_format_date_valid_2",
-					"args": [27, 1, 2003],
-					"expected_result": "27 January, 2003",
-					"exception_message": null
-				},
-				{
-					"name": "test_format_date_valid_3",
-					"args": [7, 8, 2000],
-					"expected_result": "07 August, 2000",
-					"exception_message": null
-				},
-				{
-					"name": "test_format_date_valid_4",
-					"args": [31, 12, 1999],
-					"expected_result": "31 December, 1999",
-					"exception_message": null
-				},
-				{
-					"name": "test_format_date_valid_5",
-					"args": [15, 4, 2023],
-					"expected_result": "15 April, 2023",
-					"exception_message": null
-				},
-				{
-					"name": "test_format_date_invalid_1",
-					"args": [32, 1, 2003],
-					"expected_result": null,
-					"exception_message": "The given date: 32, 1, 2003 is invalid"
-				},
-				{
-					"name": "test_format_date_invalid_2",
-					"args": [30, 13, 2003],
-					"expected_result": null,
-					"exception_message": "The given date: 30, 13, 2003 is invalid"
-				},
-				{
-					"name": "test_format_date_invalid_3",
-					"args": [29, 2, 2003],
-					"expected_result": null,
-					"exception_message": "The given date: 29, 2, 2003 is invalid"
-				},
-				{
-					"name": "test_format_date_invalid_4",
-					"args": [0, 5, 2005],
-					"expected_result": null,
-					"exception_message": "The given date: 0, 5, 2005 is invalid"
-				},
-				{
-					"name": "test_format_date_invalid_5",
-					"args": [31, 2, 2022],
-					"expected_result": null,
-					"exception_message": "The given date: 31, 2, 2022 is invalid"
-				},
-				{
-					"name": "test_format_date_invalid_april",
-					"args": [31, 4, 1978],
-					"expected_result": null,
-					"exception_message": "The given date: 31, 4, 1978 is invalid"
-				},
-				{
-					"name": "test_format_date_invalid_september",
-					"args": [31, 9, 2022],
-					"expected_result": null,
-					"exception_message": "The given date: 31, 9, 2022 is invalid"
-				},
-				{
-					"name": "test_format_date_leap_year",
-					"args": [29, 2, 2020],
-					"expected_result": "29 February, 2020",
-					"exception_message": null
-				},
-				{
-					"name": "test_format_date_non_leap_year",
-					"args": [29, 2, 2021],
-					"expected_result": null,
-					"exception_message": "The given date: 29, 2, 2021 is invalid"
-				},
-				{
-					"name": "test_format_date_invalid_june",
-					"args": [31, 6, 2022],
-					"expected_result": null,
-					"exception_message": "The given date: 31, 6, 2022 is invalid"
-				}
-			]
-		},
-		{
-			"test_function": "split_by_delimiter",
-			"args_name": ["some_string", "delimiter"],
-			"test_cases": [
-				{
-					"name": "test_split_by_delimiter_valid_1",
-					"args": ["a,b,c", ","],
-					"expected_result": ["a", "b", "c"],
-					"exception_message": null
-				},
-				{
-					"name": "test_split_by_delimiter_valid_2",
-					"args": ["a b c", " "],
-					"expected_result": ["a", "b", "c"],
-					"exception_message": null
-				},
-				{
-					"name": "test_split_by_delimiter_valid_3",
-					"args": ["a,b,c", " "],
-					"expected_result": ["a,b,c"],
-					"exception_message": null
-				},
-				{
-					"name": "test_split_by_delimiter_variety_3",
-					"args": ["1-2-3-4-5", "-"],
-					"expected_result": ["1", "2", "3", "4", "5"],
-					"exception_message": null
-				},
-				{
-					"name": "test_split_by_delimiter_variety_1",
-					"args": ["one,two,three", "e"],
-					"expected_result": ["on", ",two,thr", "", ""],
-					"exception_message": null
-				},
-				{
-					"name": "test_split_by_delimiter_variety_2",
-					"args": ["a b c ", " "],
-					"expected_result": ["a", "b", "c", ""],
-					"exception_message": null
-				},
-				{
-					"name": "test_split_by_delimiter_valid_4",
-					"args": ["a,b,c", ""],
-					"expected_result": ["a,b,c"],
-					"exception_message": null
-				},
-				{
-					"name": "test_split_by_delimiter_invalid_1",
-					"args": [12, " "],
-					"expected_result": null,
-					"exception_message": "Invalid Input"
-				},
-				{
-					"name": "test_split_by_delimiter_invalid_2",
-					"args": ["a,b,c", 12],
-					"expected_result": null,
-					"exception_message": "Invalid Input"
-				},
-				{
-					"name": "test_split_by_delimiter_invalid_3",
-					"args": [null, ","],
-					"expected_result": null,
-					"exception_message": "Invalid Input"
-				},
-				{
-					"name": "test_split_by_delimiter_invalid_4",
-					"args": ["a,b,c", null],
-					"expected_result": null,
-					"exception_message": "Invalid Input"
-				},
-				{
-					"name": "test_split_by_delimiter_invalid_5",
-					"args": [",", null],
-					"expected_result": null,
-					"exception_message": "Invalid Input"
-				}
-			]
-		},
-		{
-			"test_function": "check_perfect_squares",
-			"args_name": ["tups"],
-			"test_cases": [
-				{
-					"name": "test_check_perfect_squares_valid_1",
-					"args": [
-						[
-							{ "__tuple__": true, "items": [1, 1] },
-							{ "__tuple__": true, "items": [2, 4] },
-							{ "__tuple__": true, "items": [3, 9] }
-						]
-					],
-					"expected_result": true,
-					"exception_message": null
-				},
-				{
-					"name": "test_check_perfect_squares_valid_2",
-					"args": [
-						[
-							{ "__tuple__": true, "items": [1, 1] },
-							{ "__tuple__": true, "items": [2, 4] },
-							{ "__tuple__": true, "items": [3, 8] }
-						]
-					],
-					"expected_result": false,
-					"exception_message": null
-				},
-				{
-					"name": "test_check_perfect_squares_valid_3",
-					"args": [
-						[
-							{ "__tuple__": true, "items": [1, 1] },
-							{ "__tuple__": true, "items": [2, 4] },
-							{ "__tuple__": true, "items": [3, 9] },
-							{ "__tuple__": true, "items": [4, 16] }
-						]
-					],
-					"expected_result": true,
-					"exception_message": null
-				},
-				{
-					"name": "test_check_perfect_squares_valid_4",
-					"args": [
-						[
-							{ "__tuple__": true, "items": [1, 1] },
-							{ "__tuple__": true, "items": [2, 4] },
-							{ "__tuple__": true, "items": [3, 9] },
-							{ "__tuple__": true, "items": [4, 15] }
-						]
-					],
-					"expected_result": false,
-					"exception_message": null
-				},
-				{
-					"name": "test_check_perfect_squares_valid_5",
-					"args": [
-						[
-							{ "__tuple__": true, "items": [1, 1] },
-							{ "__tuple__": true, "items": [2, 4] },
-							{ "__tuple__": true, "items": [3, 9] },
-							{ "__tuple__": true, "items": [4, 16] },
-							{ "__tuple__": true, "items": [5, 25] }
-						]
-					],
-					"expected_result": true,
-					"exception_message": null
-				},
-				{
-					"name": "test_check_perfect_squares_invalid_1",
-					"args": [
-						[
-							{
-								"__tuple__": true,
-								"items": [
-									"1, 1",
-									{ "__tuple__": true, "items": [2, 4] },
-									{ "__tuple__": true, "items": [3, 9] },
-									{ "__tuple__": true, "items": [4, 16] },
-									{ "__tuple__": true, "items": [5, 25] },
-									{ "__tuple__": true, "items": [6, 36] }
-								]
-							}
-						]
-					],
-					"expected_result": null,
-					"exception_message": "Invalid Input"
-				},
-				{
-					"name": "test_check_perfect_squares_invalid_2",
-					"args": [[1, 1, 2, 2]],
-					"expected_result": null,
-					"exception_message": "Invalid Input"
-				},
-				{
-					"name": "test_check_perfect_squares_invalid_3",
-					"args": [{ "__tuple__": true, "items": [1, 1] }],
-					"expected_result": null,
-					"exception_message": "Invalid Input"
-				},
-				{
-					"name": "test_check_perfect_squares_invalid_4",
-					"args": [
-						[
-							{ "__tuple__": true, "items": [1, 1, 1] },
-							{ "__tuple__": true, "items": [2, 2, 2] }
-						]
-					],
-					"expected_result": null,
-					"exception_message": "Invalid Input"
-				}
-			]
-		}
-	]
+  "tests": [
+    {
+      "test_function": "format_date",
+      "args_name": ["day", "month", "year"],
+      "test_cases": [
+        {
+          "name": "test_format_date_valid_1",
+          "args": [1, 8, 2000],
+          "expected_result": "01 August, 2000",
+          "exception_message": null
+        },
+        {
+          "name": "test_format_date_valid_2",
+          "args": [27, 1, 2003],
+          "expected_result": "27 January, 2003",
+          "exception_message": null
+        },
+        {
+          "name": "test_format_date_valid_3",
+          "args": [7, 8, 2000],
+          "expected_result": "07 August, 2000",
+          "exception_message": null
+        },
+        {
+          "name": "test_format_date_valid_4",
+          "args": [31, 12, 1999],
+          "expected_result": "31 December, 1999",
+          "exception_message": null
+        },
+        {
+          "name": "test_format_date_valid_5",
+          "args": [15, 4, 2023],
+          "expected_result": "15 April, 2023",
+          "exception_message": null
+        },
+        {
+          "name": "test_format_date_invalid_1",
+          "args": [32, 1, 2003],
+          "expected_result": null,
+          "exception_message": "The given date: 32, 1, 2003 is invalid"
+        },
+        {
+          "name": "test_format_date_invalid_2",
+          "args": [30, 13, 2003],
+          "expected_result": null,
+          "exception_message": "The given date: 30, 13, 2003 is invalid"
+        },
+        {
+          "name": "test_format_date_invalid_3",
+          "args": [29, 2, 2003],
+          "expected_result": null,
+          "exception_message": "The given date: 29, 2, 2003 is invalid"
+        },
+        {
+          "name": "test_format_date_invalid_4",
+          "args": [0, 5, 2005],
+          "expected_result": null,
+          "exception_message": "The given date: 0, 5, 2005 is invalid"
+        },
+        {
+          "name": "test_format_date_invalid_5",
+          "args": [31, 2, 2022],
+          "expected_result": null,
+          "exception_message": "The given date: 31, 2, 2022 is invalid"
+        },
+        {
+          "name": "test_format_date_invalid_april",
+          "args": [31, 4, 1978],
+          "expected_result": null,
+          "exception_message": "The given date: 31, 4, 1978 is invalid"
+        },
+        {
+          "name": "test_format_date_invalid_september",
+          "args": [31, 9, 2022],
+          "expected_result": null,
+          "exception_message": "The given date: 31, 9, 2022 is invalid"
+        },
+        {
+          "name": "test_format_date_leap_year",
+          "args": [29, 2, 2020],
+          "expected_result": "29 February, 2020",
+          "exception_message": null
+        },
+        {
+          "name": "test_format_date_non_leap_year",
+          "args": [29, 2, 2021],
+          "expected_result": null,
+          "exception_message": "The given date: 29, 2, 2021 is invalid"
+        },
+        {
+          "name": "test_format_date_invalid_june",
+          "args": [31, 6, 2022],
+          "expected_result": null,
+          "exception_message": "The given date: 31, 6, 2022 is invalid"
+        }
+      ]
+    },
+    {
+      "test_function": "split_by_delimiter",
+      "args_name": ["some_string", "delimiter"],
+      "test_cases": [
+        {
+          "name": "test_split_by_delimiter_valid_1",
+          "args": ["a,b,c", ","],
+          "expected_result": ["a", "b", "c"],
+          "exception_message": null
+        },
+        {
+          "name": "test_split_by_delimiter_valid_2",
+          "args": ["a b c", " "],
+          "expected_result": ["a", "b", "c"],
+          "exception_message": null
+        },
+        {
+          "name": "test_split_by_delimiter_valid_3",
+          "args": ["a,b,c", " "],
+          "expected_result": ["a,b,c"],
+          "exception_message": null
+        },
+        {
+          "name": "test_split_by_delimiter_variety_3",
+          "args": ["1-2-3-4-5", "-"],
+          "expected_result": ["1", "2", "3", "4", "5"],
+          "exception_message": null
+        },
+        {
+          "name": "test_split_by_delimiter_variety_1",
+          "args": ["one,two,three", "e"],
+          "expected_result": ["on", ",two,thr", "", ""],
+          "exception_message": null
+        },
+        {
+          "name": "test_split_by_delimiter_variety_2",
+          "args": ["a b c ", " "],
+          "expected_result": ["a", "b", "c", ""],
+          "exception_message": null
+        },
+        {
+          "name": "test_split_by_delimiter_variety_4",
+          "args": ["a b c  ", " "],
+          "expected_result": ["a", "b", "c", "", ""],
+          "exception_message": null
+        },
+        {
+          "name": "test_split_by_delimiter_variety_5",
+          "args": [" a b c", " "],
+          "expected_result": ["", "a", "b", "c"],
+          "exception_message": null
+        },
+        {
+          "name": "test_split_by_delimiter_valid_4",
+          "args": ["a,b,c", ""],
+          "expected_result": ["a,b,c"],
+          "exception_message": null
+        },
+        {
+          "name": "test_split_by_delimiter_invalid_1",
+          "args": [12, " "],
+          "expected_result": null,
+          "exception_message": "Invalid Input"
+        },
+        {
+          "name": "test_split_by_delimiter_invalid_2",
+          "args": ["a,b,c", 12],
+          "expected_result": null,
+          "exception_message": "Invalid Input"
+        },
+        {
+          "name": "test_split_by_delimiter_invalid_3",
+          "args": [null, ","],
+          "expected_result": null,
+          "exception_message": "Invalid Input"
+        },
+        {
+          "name": "test_split_by_delimiter_invalid_4",
+          "args": ["a,b,c", null],
+          "expected_result": null,
+          "exception_message": "Invalid Input"
+        },
+        {
+          "name": "test_split_by_delimiter_invalid_5",
+          "args": [",", null],
+          "expected_result": null,
+          "exception_message": "Invalid Input"
+        },
+        {
+          "name": "test_split_by_delimiter_invalid_6",
+          "args": ["a,b,c", ",,"],
+          "expected_result": null,
+          "exception_message": "Invalid Input"
+        }
+      ]
+    },
+    {
+      "test_function": "check_perfect_squares",
+      "args_name": ["tups"],
+      "test_cases": [
+        {
+          "name": "test_check_perfect_squares_valid_1",
+          "args": [
+            [
+              { "__tuple__": true, "items": [1, 1] },
+              { "__tuple__": true, "items": [2, 4] },
+              { "__tuple__": true, "items": [3, 9] }
+            ]
+          ],
+          "expected_result": true,
+          "exception_message": null
+        },
+        {
+          "name": "test_check_perfect_squares_valid_2",
+          "args": [
+            [
+              { "__tuple__": true, "items": [1, 1] },
+              { "__tuple__": true, "items": [2, 4] },
+              { "__tuple__": true, "items": [3, 8] }
+            ]
+          ],
+          "expected_result": false,
+          "exception_message": null
+        },
+        {
+          "name": "test_check_perfect_squares_valid_3",
+          "args": [
+            [
+              { "__tuple__": true, "items": [1, 1] },
+              { "__tuple__": true, "items": [2, 4] },
+              { "__tuple__": true, "items": [3, 9] },
+              { "__tuple__": true, "items": [4, 16] }
+            ]
+          ],
+          "expected_result": true,
+          "exception_message": null
+        },
+        {
+          "name": "test_check_perfect_squares_valid_4",
+          "args": [
+            [
+              { "__tuple__": true, "items": [1, 1] },
+              { "__tuple__": true, "items": [2, 4] },
+              { "__tuple__": true, "items": [3, 9] },
+              { "__tuple__": true, "items": [4, 15] }
+            ]
+          ],
+          "expected_result": false,
+          "exception_message": null
+        },
+        {
+          "name": "test_check_perfect_squares_valid_5",
+          "args": [
+            [
+              { "__tuple__": true, "items": [1, 1] },
+              { "__tuple__": true, "items": [2, 4] },
+              { "__tuple__": true, "items": [3, 9] },
+              { "__tuple__": true, "items": [4, 16] },
+              { "__tuple__": true, "items": [5, 25] }
+            ]
+          ],
+          "expected_result": true,
+          "exception_message": null
+        },
+        {
+          "name": "test_check_perfect_squares_valid_6",
+          "args": [
+            [
+              { "__tuple__": true, "items": [1.1, 1.21] },
+              { "__tuple__": true, "items": [2.5, 6.25] }
+            ]
+          ],
+          "expected_result": true,
+          "exception_message": null
+        },
+        {
+          "name": "test_check_perfect_squares_invalid_1",
+          "args": [
+            [
+              {
+                "__tuple__": true,
+                "items": [
+                  "1, 1",
+                  { "__tuple__": true, "items": [2, 4] },
+                  { "__tuple__": true, "items": [3, 9] },
+                  { "__tuple__": true, "items": [4, 16] },
+                  { "__tuple__": true, "items": [5, 25] },
+                  { "__tuple__": true, "items": [6, 36] }
+                ]
+              }
+            ]
+          ],
+          "expected_result": null,
+          "exception_message": "Invalid Input"
+        },
+        {
+          "name": "test_check_perfect_squares_invalid_2",
+          "args": [[1, 1, 2, 2]],
+          "expected_result": null,
+          "exception_message": "Invalid Input"
+        },
+        {
+          "name": "test_check_perfect_squares_invalid_3",
+          "args": [{ "__tuple__": true, "items": [1, 1] }],
+          "expected_result": null,
+          "exception_message": "Invalid Input"
+        },
+        {
+          "name": "test_check_perfect_squares_invalid_4",
+          "args": [
+            [
+              { "__tuple__": true, "items": [1, 1, 1] },
+              { "__tuple__": true, "items": [2, 2, 2] }
+            ]
+          ],
+          "expected_result": null,
+          "exception_message": "Invalid Input"
+        }
+      ]
+    }
+  ]
 }

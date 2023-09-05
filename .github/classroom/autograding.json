@@ -127,6 +127,18 @@
       "points": 1
     },
     {
+      "name": "test_split_by_delimiter_variety_4",
+      "run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_variety_4.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_split_by_delimiter_variety_5",
+      "run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_variety_5.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
       "name": "test_split_by_delimiter_valid_4",
       "run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_valid_4.py",
       "timeout": 5,
@@ -163,6 +175,12 @@
       "points": 1
     },
     {
+      "name": "test_split_by_delimiter_invalid_6",
+      "run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_invalid_6.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
       "name": "test_check_perfect_squares_valid_1",
       "run": "pytest tests/test_check_perfect_squares/test_check_perfect_squares_valid_1.py",
       "timeout": 5,
@@ -189,6 +207,12 @@
     {
       "name": "test_check_perfect_squares_valid_5",
       "run": "pytest tests/test_check_perfect_squares/test_check_perfect_squares_valid_5.py",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "test_check_perfect_squares_valid_6",
+      "run": "pytest tests/test_check_perfect_squares/test_check_perfect_squares_valid_6.py",
       "timeout": 5,
       "points": 1
     },
