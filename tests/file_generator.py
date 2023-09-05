@@ -169,33 +169,32 @@ class AutogradingConfigGenerator:
         for test_function_config in test_config["tests"]:
             function_name = test_function_config["test_function"]
             test_suite_dir = f"test_{function_name}"
-            setup_command = "sudo -H pip3 install pytest"
+            # setup_command = "sudo -H pip3 install pytest"
 
             for test_case in test_function_config["test_cases"]:
                 test_file = test_case["name"]
                 test_cases.append(
                     {
                         "name": test_file,
-                        "setup": setup_command,
+                        # "setup": setup_command,
                         "run": f"pytest tests/{test_suite_dir}/{test_file}.py",
                         "timeout": 5,
                         "points": 1,
                     }
                 )
 
-            # Adding a bonus linting pass to the test suite
-            test_cases.append(
-                {
-                    "name": "pep8_linter_check_flake8_bonus",
-                    "setup": "sudo -H pip3 install flake 8",
-                    "run": (
-                        "flake8 lab2.py --max-line-length=100"
-                        " --ignore=E402,F841,F401,E302,E305,E266,E203,W503,E722"
-                    ),
-                    "timeout": 5,
-                    "points": 5,
-                }
-            )
+        # Adding a bonus linting pass to the test suite
+        test_cases.append(
+            {
+                "name": "bonus_pep8_linter_check_flake8",
+                "run": (
+                    "flake8 lab2.py --max-line-length=100"
+                    " --ignore=E402,F841,F401,E302,E305,E266,E203,W503,E722"
+                ),
+                "timeout": 5,
+                "points": 5,
+            }
+        )
 
         config = {"tests": test_cases}
         self.write_config(config)
