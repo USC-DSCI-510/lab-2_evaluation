@@ -56,9 +56,9 @@ jobs:
         id: student-metadata
         run: |
           # Fetch student metadata
-          student_login=$(gh repo view $GITHUB_REPOSITORY --json owner.login -q '.owner.login')
+          student_login=$(gh repo view $GITHUB_REPOSITORY --json owner -q '.owner.login')
           repo_name=$(basename "$GITHUB_REPOSITORY")
-          repo_url=$(gh repo view $GITHUB_REPOSITORY --json html_url -q '.html_url')
+          repo_url=$(gh repo view $GITHUB_REPOSITORY --json url -q '.url')
 
           # You can fetch other metadata as needed
 
