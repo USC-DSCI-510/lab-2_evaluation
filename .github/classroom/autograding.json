@@ -219,8 +219,7 @@
     {
       "name": "bonus_pep8_linter_check_flake8",
       "run": "flake8 lab2.py --max-line-length=100 --ignore=E402,F841,F401,E302,E305,E266,E203,W503,E722",
-      "timeout": 5,
-      "points": 5
+      "timeout": 5
     }
   ]
 }
