@@ -52,7 +52,7 @@ jobs:
                     cd "$student_repo"
 
                     # Checkout to main and add the post-grading workflow file if not present
-                    git checkout -b main
+                    git checkout main
 
                     # Copy necessary files if they don't exist
                     if [ ! -f ./.github/workflows/post-grading.yml ]; then
