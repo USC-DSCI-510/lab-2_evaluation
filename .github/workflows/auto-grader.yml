@@ -3,6 +3,11 @@ name: Master Autograder Workflow
 on: 
   workflow_dispatch:
 
+permissions:
+  checks: write
+  actions: read
+  contents: read
+
 jobs:
     auto_grade:
         runs-on: ubuntu-latest
@@ -40,7 +45,8 @@ jobs:
                 cd "$SUBMISSION_DIR"
 
                 for student_repo in ./*; do
-                  if [ -d "$student_repo" ]; then
+                  # if [ -d "$student_repo" ]; then
+                  if [ -d "lab-2-KayvanShah1" ]; then
                     repo_name=$(basename "$student_repo")
                     branch_name="auto-grader-test-$CURRENT_DATETIME"  # Construct the branch name
             
