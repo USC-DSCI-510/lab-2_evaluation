@@ -57,9 +57,11 @@ jobs:
                     cp ../../$EVALUATION_REPO/.github/workflows/classroom.yml ./.github/workflows/classroom.yml
                     cp ../../$EVALUATION_REPO/.github/workflows/post-grading.yml ./.github/workflows/post-grading.yml
                     cp -r ../../$EVALUATION_REPO/tests .
+
+                    rm test.py
                     
                     git add .
-                    git commit -m "Add testing and grading files"
+                    git commit -m "Run the Autograder Bot"
                     git push https://$GITHUB_TOKEN@github.com/USC-DSCI-510/$repo_name.git "$branch_name"
                     
                     cd ..
