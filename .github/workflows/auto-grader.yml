@@ -50,16 +50,30 @@ jobs:
                     branch_name="auto-grader-test-$CURRENT_DATETIME"  # Construct the branch name
             
                     cd "$student_repo"
+
+                    # Checkout to main and add the post-grading workflow file if not present
+                    git checkout -b main
+
+                    # Copy necessary files if they don't exist
+                    if [ ! -f ./.github/workflows/post-grading.yml ]; then
+                      cp ../../$EVALUATION_REPO/.github/workflows/post-grading.yml ./.github/workflows/post-grading.yml
+                      git add .
+                      git commit -m "Adding the post-grading workflow file"
+                      git push https://$GITHUB_TOKEN@github.com/USC-DSCI-510/$repo_name.git main
+                    fi
                     
                     git checkout -b "$branch_name" 
                     
+                    # Copy necessary files
                     cp ../../$EVALUATION_REPO/.github/classroom/autograding.json ./.github/classroom/autograding.json
                     cp ../../$EVALUATION_REPO/.github/workflows/classroom.yml ./.github/workflows/classroom.yml
                     cp ../../$EVALUATION_REPO/.github/workflows/post-grading.yml ./.github/workflows/post-grading.yml
                     cp -r ../../$EVALUATION_REPO/tests .
 
+                    # Remove test.py
                     rm test.py
                     
+                    # Commit changes and push changes
                     git add .
                     git commit -m "Run the Autograder Bot"
                     git push https://$GITHUB_TOKEN@github.com/USC-DSCI-510/$repo_name.git "$branch_name"
