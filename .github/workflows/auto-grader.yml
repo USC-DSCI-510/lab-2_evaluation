@@ -45,8 +45,7 @@ jobs:
                 cd "$SUBMISSION_DIR"
 
                 for student_repo in ./*; do
-                  # if [ -d "$student_repo" ]; then
-                  if [ -d "lab-2-KayvanShah1" ]; then
+                  if [ -d "$student_repo" ]; then
                     repo_name=$(basename "$student_repo")
                     branch_name="auto-grader-test-$CURRENT_DATETIME"  # Construct the branch name
             
