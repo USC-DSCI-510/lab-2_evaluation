@@ -46,11 +46,14 @@ def check_perfect_squares(tups: List[Tuple]) -> bool:
     if not isinstance(tups, list) or not all(isinstance(t, tuple) and len(t) == 2 for t in tups):
         raise Exception("Invalid Input")
 
+    # Define a tolerance for comparing floating-point numbers
+    tolerance = 1e-4  # Adjust this tolerance as needed
+
     # Check if each tuple is a perfect square pair
     for tup in tups:
         if not isinstance(tup[0], (int, float)) or not isinstance(tup[1], (int, float)):
             raise Exception("Invalid Input")
-        if tup[0] * tup[0] != tup[1]:
+        if tup[0] * tup[0] - tup[1] > tolerance:
             return False
 
     return True
