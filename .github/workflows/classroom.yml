@@ -19,6 +19,7 @@ jobs:
     run-auto-grade:
         name: Autograding
         runs-on: ubuntu-latest
+
         steps:
             - uses: actions/checkout@v3
             
@@ -26,11 +27,6 @@ jobs:
               uses: actions/setup-python@v4
               with:
                 python-version: '3.x'
-
-            - name: Echo Run ID
-              run: |
-                # Access the GITHUB_RUN_ID environment variable
-                echo "Run ID: $GITHUB_RUN_ID"
 
             - name: Install dependencies
               run: pip install flake8 black pytest

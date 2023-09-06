@@ -53,6 +53,7 @@ jobs:
                     
                     cp ../../$EVALUATION_REPO/.github/classroom/autograding.json ./.github/classroom/autograding.json
                     cp ../../$EVALUATION_REPO/.github/workflows/classroom.yml ./.github/workflows/classroom.yml
+                    cp ../../$EVALUATION_REPO/.github/workflows/post-grading.yml ./.github/workflows/post-grading.yml
                     cp -r ../../$EVALUATION_REPO/tests .
                     
                     git add .
