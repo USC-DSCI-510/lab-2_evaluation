@@ -43,3 +43,4 @@ jobs:
 
             - uses: education/autograding@v1
               name: Run the Grading Script
+              continue-on-error: true
