@@ -46,18 +46,27 @@ jobs:
           points_gained=$(echo $points_line | awk '{print $NF}' | cut -d'/' -f1)
           max_points_possible=$(echo $points_line | awk '{print $NF}' | cut -d'/' -f2)
 
+          bonus_points=0
           if gh run view $gwf_run_id --log | grep -q '✅ bonus_pep8_linter_check_flake8'; then
-            bonus_points=5
-          else
-            bonus_points=0
+            bonus_points=$(echo "scale=2; $bonus_points + 2.5" | bc)
+          fi
+          if ! gh run view $gwf_run_id --log | grep -q 'Oh no! 💥 💔 💥'; then
+            bonus_points=$(echo "scale=2; $bonus_points + 2.5" | bc)
           fi
 
-          total_points_obtained=$((points_gained + bonus_points))
+          scaled_points=$(echo "scale=2; $points_gained / $max_points_possible * 30" | bc)
+          scaled_max_points_possible=30
+          max_bonus_points_possible=5
+
+          total_points_obtained=$(echo "scale=2; $scaled_points + $bonus_points" | bc)
 
           echo "points_gained=$points_gained" >> "$GITHUB_ENV"
           echo "max_points_possible=$max_points_possible" >> "$GITHUB_ENV"
           echo "bonus_points_gained=$bonus_points" >> "$GITHUB_ENV"
           echo "total_points_obtained=$total_points_obtained" >> "$GITHUB_ENV"
+          echo "scaled_points=$scaled_points" >> "$GITHUB_ENV"
+          echo "scaled_max_points_possible=$scaled_max_points_possible" >> "$GITHUB_ENV"
+          echo "max_bonus_points_possible=$max_bonus_points_possible" >> "$GITHUB_ENV"
 
       - name: Fetch Student Metadata
         id: student-metadata
@@ -83,8 +92,10 @@ jobs:
             echo "|                    | Obtained                | Max Possible         |" >> $GITHUB_STEP_SUMMARY
             echo "|--------------------|-------------------------|----------------------|" >> $GITHUB_STEP_SUMMARY
             echo "| Points             | $points_gained          | $max_points_possible |" >> $GITHUB_STEP_SUMMARY
-            echo "| Bonus Points       | $bonus_points_gained    | 5                    |" >> $GITHUB_STEP_SUMMARY
-            echo "| Total Points       | $total_points_obtained  | $max_points_possible |" >> $GITHUB_STEP_SUMMARY
+            echo "| Scaled Points      | $scaled_points          | $scaled_max_points_possible  |" >> $GITHUB_STEP_SUMMARY
+            echo "| Bonus Points       | $bonus_points_gained    | $max_bonus_points_possible   |" >> $GITHUB_STEP_SUMMARY
+            echo "|--------------------|-------------------------|------------------------------|" >> $GITHUB_STEP_SUMMARY
+            echo "| Total Points       | $total_points_obtained  | $scaled_max_points_possible  |" >> $GITHUB_STEP_SUMMARY
 
             echo "> Detailed Feedback - Summary of Test Cases" >> $GITHUB_STEP_SUMMARY
             echo "> [View Logs](https://github.com/$name_with_owner/actions/runs/$gwf_run_id)" >> $GITHUB_STEP_SUMMARY

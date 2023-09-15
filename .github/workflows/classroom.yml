@@ -34,12 +34,12 @@ jobs:
 
             - name: Format with Black
               run: |
-                find . -name "*.py" -print0 | xargs -0 black --preview --line-length=100
+                black lab2.py --check --preview --line-length=120
               continue-on-error: true
 
             - name: Lint with Flake8
               run: |
-                find . -name "*.py" -print0 | xargs -0 flake8 --max-line-length=100 --ignore=E402,E302,E305,E266,E203,W503,E722,E712,E721
+                flake8 lab2.py --max-line-length=120 --ignore=E402,E302,E305,E266,E203,W503,E722,E712,E721,E713,E714,E731
               continue-on-error: true
 
             - uses: education/autograding@v1
