@@ -1,249 +1,249 @@
 {
-  "tests": [
-    {
-      "name": "test_format_date_valid_1",
-      "run": "pytest tests/test_format_date/test_format_date_valid_1.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_format_date_valid_2",
-      "run": "pytest tests/test_format_date/test_format_date_valid_2.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_format_date_valid_3",
-      "run": "pytest tests/test_format_date/test_format_date_valid_3.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_format_date_valid_4",
-      "run": "pytest tests/test_format_date/test_format_date_valid_4.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_format_date_valid_5",
-      "run": "pytest tests/test_format_date/test_format_date_valid_5.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_format_date_invalid_1",
-      "run": "pytest tests/test_format_date/test_format_date_invalid_1.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_format_date_invalid_2",
-      "run": "pytest tests/test_format_date/test_format_date_invalid_2.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_format_date_invalid_3",
-      "run": "pytest tests/test_format_date/test_format_date_invalid_3.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_format_date_invalid_4",
-      "run": "pytest tests/test_format_date/test_format_date_invalid_4.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_format_date_invalid_5",
-      "run": "pytest tests/test_format_date/test_format_date_invalid_5.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_format_date_invalid_april",
-      "run": "pytest tests/test_format_date/test_format_date_invalid_april.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_format_date_invalid_september",
-      "run": "pytest tests/test_format_date/test_format_date_invalid_september.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_format_date_leap_year",
-      "run": "pytest tests/test_format_date/test_format_date_leap_year.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_format_date_non_leap_year",
-      "run": "pytest tests/test_format_date/test_format_date_non_leap_year.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_format_date_invalid_june",
-      "run": "pytest tests/test_format_date/test_format_date_invalid_june.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_split_by_delimiter_valid_1",
-      "run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_valid_1.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_split_by_delimiter_valid_2",
-      "run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_valid_2.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_split_by_delimiter_valid_3",
-      "run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_valid_3.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_split_by_delimiter_variety_3",
-      "run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_variety_3.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_split_by_delimiter_variety_1",
-      "run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_variety_1.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_split_by_delimiter_variety_2",
-      "run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_variety_2.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_split_by_delimiter_variety_4",
-      "run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_variety_4.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_split_by_delimiter_variety_5",
-      "run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_variety_5.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_split_by_delimiter_valid_4",
-      "run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_valid_4.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_split_by_delimiter_invalid_1",
-      "run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_invalid_1.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_split_by_delimiter_invalid_2",
-      "run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_invalid_2.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_split_by_delimiter_invalid_3",
-      "run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_invalid_3.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_split_by_delimiter_invalid_4",
-      "run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_invalid_4.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_split_by_delimiter_invalid_5",
-      "run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_invalid_5.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_split_by_delimiter_invalid_6",
-      "run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_invalid_6.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_check_perfect_squares_valid_1",
-      "run": "pytest tests/test_check_perfect_squares/test_check_perfect_squares_valid_1.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_check_perfect_squares_valid_2",
-      "run": "pytest tests/test_check_perfect_squares/test_check_perfect_squares_valid_2.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_check_perfect_squares_valid_3",
-      "run": "pytest tests/test_check_perfect_squares/test_check_perfect_squares_valid_3.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_check_perfect_squares_valid_4",
-      "run": "pytest tests/test_check_perfect_squares/test_check_perfect_squares_valid_4.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_check_perfect_squares_valid_5",
-      "run": "pytest tests/test_check_perfect_squares/test_check_perfect_squares_valid_5.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_check_perfect_squares_valid_6",
-      "run": "pytest tests/test_check_perfect_squares/test_check_perfect_squares_valid_6.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_check_perfect_squares_invalid_1",
-      "run": "pytest tests/test_check_perfect_squares/test_check_perfect_squares_invalid_1.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_check_perfect_squares_invalid_2",
-      "run": "pytest tests/test_check_perfect_squares/test_check_perfect_squares_invalid_2.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_check_perfect_squares_invalid_3",
-      "run": "pytest tests/test_check_perfect_squares/test_check_perfect_squares_invalid_3.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "test_check_perfect_squares_invalid_4",
-      "run": "pytest tests/test_check_perfect_squares/test_check_perfect_squares_invalid_4.py",
-      "timeout": 5,
-      "points": 1
-    },
-    {
-      "name": "bonus_pep8_linter_check_flake8",
-      "run": "flake8 lab2.py --max-line-length=100 --ignore=E402,E302,E305,E266,E203,W503,E722,E712",
-      "timeout": 5
-    }
-  ]
+	"tests": [
+		{
+			"name": "test_format_date_valid_1",
+			"run": "pytest tests/test_format_date/test_format_date_valid_1.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_format_date_valid_2",
+			"run": "pytest tests/test_format_date/test_format_date_valid_2.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_format_date_valid_3",
+			"run": "pytest tests/test_format_date/test_format_date_valid_3.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_format_date_valid_4",
+			"run": "pytest tests/test_format_date/test_format_date_valid_4.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_format_date_valid_5",
+			"run": "pytest tests/test_format_date/test_format_date_valid_5.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_format_date_invalid_1",
+			"run": "pytest tests/test_format_date/test_format_date_invalid_1.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_format_date_invalid_2",
+			"run": "pytest tests/test_format_date/test_format_date_invalid_2.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_format_date_invalid_3",
+			"run": "pytest tests/test_format_date/test_format_date_invalid_3.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_format_date_invalid_4",
+			"run": "pytest tests/test_format_date/test_format_date_invalid_4.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_format_date_invalid_5",
+			"run": "pytest tests/test_format_date/test_format_date_invalid_5.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_format_date_invalid_april",
+			"run": "pytest tests/test_format_date/test_format_date_invalid_april.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_format_date_invalid_september",
+			"run": "pytest tests/test_format_date/test_format_date_invalid_september.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_format_date_leap_year",
+			"run": "pytest tests/test_format_date/test_format_date_leap_year.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_format_date_non_leap_year",
+			"run": "pytest tests/test_format_date/test_format_date_non_leap_year.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_format_date_invalid_june",
+			"run": "pytest tests/test_format_date/test_format_date_invalid_june.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_split_by_delimiter_valid_1",
+			"run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_valid_1.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_split_by_delimiter_valid_2",
+			"run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_valid_2.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_split_by_delimiter_valid_3",
+			"run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_valid_3.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_split_by_delimiter_variety_3",
+			"run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_variety_3.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_split_by_delimiter_variety_1",
+			"run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_variety_1.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_split_by_delimiter_variety_2",
+			"run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_variety_2.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_split_by_delimiter_variety_4",
+			"run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_variety_4.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_split_by_delimiter_variety_5",
+			"run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_variety_5.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_split_by_delimiter_valid_4",
+			"run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_valid_4.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_split_by_delimiter_invalid_1",
+			"run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_invalid_1.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_split_by_delimiter_invalid_2",
+			"run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_invalid_2.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_split_by_delimiter_invalid_3",
+			"run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_invalid_3.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_split_by_delimiter_invalid_4",
+			"run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_invalid_4.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_split_by_delimiter_invalid_5",
+			"run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_invalid_5.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_split_by_delimiter_invalid_6",
+			"run": "pytest tests/test_split_by_delimiter/test_split_by_delimiter_invalid_6.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_check_perfect_squares_valid_1",
+			"run": "pytest tests/test_check_perfect_squares/test_check_perfect_squares_valid_1.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_check_perfect_squares_valid_2",
+			"run": "pytest tests/test_check_perfect_squares/test_check_perfect_squares_valid_2.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_check_perfect_squares_valid_3",
+			"run": "pytest tests/test_check_perfect_squares/test_check_perfect_squares_valid_3.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_check_perfect_squares_valid_4",
+			"run": "pytest tests/test_check_perfect_squares/test_check_perfect_squares_valid_4.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_check_perfect_squares_valid_5",
+			"run": "pytest tests/test_check_perfect_squares/test_check_perfect_squares_valid_5.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_check_perfect_squares_valid_6",
+			"run": "pytest tests/test_check_perfect_squares/test_check_perfect_squares_valid_6.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_check_perfect_squares_invalid_1",
+			"run": "pytest tests/test_check_perfect_squares/test_check_perfect_squares_invalid_1.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_check_perfect_squares_invalid_2",
+			"run": "pytest tests/test_check_perfect_squares/test_check_perfect_squares_invalid_2.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_check_perfect_squares_invalid_3",
+			"run": "pytest tests/test_check_perfect_squares/test_check_perfect_squares_invalid_3.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "test_check_perfect_squares_invalid_4",
+			"run": "pytest tests/test_check_perfect_squares/test_check_perfect_squares_invalid_4.py",
+			"timeout": 1,
+			"points": 1
+		},
+		{
+			"name": "bonus_pep8_linter_check_flake8",
+			"run": "flake8 lab2.py --max-line-length=100 --ignore=E402,E302,E305,E266,E203,W503,E722,E712",
+			"timeout": 1
+		}
+	]
 }

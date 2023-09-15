@@ -17,6 +17,7 @@ jobs:
             ASSIGNMENT_ID: ${{ vars.ASSIGNMENT_ID }}
             EVALUATION_REPO: ${{ vars.EVALUATION_REPO }}
             SUBMISSION_DIR: ${{ vars.SUBMISSION_DIR }}
+        timeout-minutes: 4
 
         steps:
             - name: Set Current Date and Time

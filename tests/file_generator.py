@@ -177,7 +177,7 @@ class AutogradingConfigGenerator:
                     {
                         "name": test_file,
                         "run": f"pytest tests/{test_suite_dir}/{test_file}.py",
-                        "timeout": 5,
+                        "timeout": 1,
                         "points": 1,
                     }
                 )
@@ -190,7 +190,7 @@ class AutogradingConfigGenerator:
                     "flake8 lab2.py --max-line-length=100"
                     " --ignore=E402,E302,E305,E266,E203,W503,E722,E712"
                 ),
-                "timeout": 5,
+                "timeout": 1,
             }
         )
 

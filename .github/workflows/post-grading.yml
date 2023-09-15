@@ -15,6 +15,7 @@ jobs:
   generate-report:
     name: Grading Report Generation
     runs-on: ubuntu-latest
+    timeout-minutes: 3
 
     env:
       GH_TOKEN: ${{ github.token }}
