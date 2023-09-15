@@ -38,7 +38,7 @@ jobs:
 
             - name: Lint with Flake8
               run: |
-                find . -name "*.py" -print0 | xargs -0 flake8 --max-line-length=100 --ignore=E402,E302,E305,E266,E203,W503,E722,E712
+                find . -name "*.py" -print0 | xargs -0 flake8 --max-line-length=100 --ignore=E402,E302,E305,E266,E203,W503,E722,E712,E721
               continue-on-error: true
 
             - uses: education/autograding@v1
