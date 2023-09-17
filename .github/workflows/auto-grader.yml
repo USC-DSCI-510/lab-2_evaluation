@@ -33,8 +33,28 @@ jobs:
             - name: Clone Evaluation Repo
               run: gh repo clone USC-DSCI-510/$EVALUATION_REPO
 
-            - name: Clone Assignments
-              run: gh classroom clone student-repos -a $ASSIGNMENT_ID --per-page 100
+            # - name: Clone Assignments
+            #   run: gh classroom clone student-repos -a $ASSIGNMENT_ID --per-page 100
+
+            - name: Read Student Roster
+              run: |
+                cat student_roster.txt  # Adjust the filename as needed and make sure it's in the same directory
+              continue-on-error: true
+
+            - name: Clone Student Repositories
+              run: |
+                cd "$SUBMISSION_DIR"
+              
+                for username in $(cat student_roster.txt); do
+                  # Construct the repository name based on the pattern
+                  repo_name="USC-DSCI-510/lab-2-$username"
+                  
+                  # Clone the repository for the current student
+                  gh repo clone "$repo_name" -- --depth 1
+                done
+                
+                cd ..
+              continue-on-error: true
             
             - name: Set Git Configuration
               run: |
