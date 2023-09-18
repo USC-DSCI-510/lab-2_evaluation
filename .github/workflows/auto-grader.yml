@@ -33,8 +33,30 @@ jobs:
             - name: Clone Evaluation Repo
               run: gh repo clone USC-DSCI-510/$EVALUATION_REPO
 
-            - name: Clone Assignments
-              run: gh classroom clone student-repos -a $ASSIGNMENT_ID --per-page 100
+            # - name: Clone Assignments
+            #   run: gh classroom clone student-repos -a $ASSIGNMENT_ID --per-page 100
+
+            - name: Read Student Roster
+              run: |
+                mkdir $SUBMISSION_DIR
+                # Copy student_roster to submission directory
+                cp $EVALUATION_REPO/.github/workflows/student_roster.txt  $SUBMISSION_DIR/student_roster.txt
+                cat $SUBMISSION_DIR/student_roster.txt
+
+            - name: Clone Student Repositories
+              run: |
+                cd "$SUBMISSION_DIR"
+              
+                for username in $(cat student_roster.txt); do
+                  username=$(echo "$username" | tr -d '[:space:]')
+                  repo_name="USC-DSCI-510/lab-3-$username"
+
+                  # Clone the repository for the current student
+                  gh repo clone $repo_name -- --depth 1
+                done
+                
+                cd ..
+              timeout-minutes: 2
             
             - name: Set Git Configuration
               run: |
@@ -71,8 +93,11 @@ jobs:
                     cp ../../$EVALUATION_REPO/.github/workflows/post-grading.yml ./.github/workflows/post-grading.yml
                     cp -r ../../$EVALUATION_REPO/tests .
 
-                    # Remove test.py
-                    rm test.py
+                    # Check if test.py exists before removing it
+                    if [ -e test.py ]; then
+                      # Remove test.py
+                      rm test.py
+                    fi
                     
                     # Commit changes and push changes
                     git add .
