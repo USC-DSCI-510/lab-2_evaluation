@@ -49,7 +49,7 @@ jobs:
               
                 for username in $(cat student_roster.txt); do
                   username=$(echo "$username" | tr -d '[:space:]')
-                  repo_name="USC-DSCI-510/lab-3-$username"
+                  repo_name="USC-DSCI-510/lab-2-$username"
 
                   # Clone the repository for the current student
                   gh repo clone $repo_name -- --depth 1
